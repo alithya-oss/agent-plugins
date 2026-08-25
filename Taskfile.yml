@@ -1,0 +1,67 @@
+version: "3"
+
+vars:
+  PLUGINS_DIR: plugins
+  SCRIPTS_DIR: scripts
+
+tasks:
+  default:
+    desc: List available tasks
+    cmds:
+      - task --list
+
+  validate:
+    desc: Validate all plugin.json manifests against the Agent Plugins v1.0.0 schema
+    cmds:
+      - ./{{.SCRIPTS_DIR}}/validate.sh {{.CLI_ARGS}}
+    sources:
+      - "{{.PLUGINS_DIR}}/**/plugin.json"
+
+  validate:plugin:
+    desc: Validate a single plugin (e.g. task validate:plugin -- hello-world)
+    cmds:
+      - ./{{.SCRIPTS_DIR}}/validate.sh {{.CLI_ARGS}}
+
+  typecheck:
+    desc: Run TypeScript type checking
+    cmds:
+      - npx tsc --noEmit
+
+  sync:
+    desc: Sync backstage-development skills from upstream repositories
+    cmds:
+      - npx tsx src/sync-backstage-skills.ts {{.CLI_ARGS}}
+
+  sync:dry-run:
+    desc: Preview upstream skill changes without writing
+    cmds:
+      - npx tsx src/sync-backstage-skills.ts --dry-run
+
+  deploy:
+    desc: Deploy skills and agents to all Multica servers/workspaces (requires MULTICA_TOKEN)
+    deps: [deploy:check]
+    cmds:
+      - npx tsx src/deploy-to-multica.ts {{.CLI_ARGS}}
+
+  deploy:check:
+    desc: Validate multica.deployment.config.yaml with conftest policies
+    cmds:
+      - conftest test multica.deployment.config.yaml --policy .conftest/policy/multica/ --all-namespaces
+    sources:
+      - multica.deployment.config.yaml
+      - .conftest/policy/multica/*.rego
+
+  deploy:dry-run:
+    desc: Preview what would be deployed to Multica without making changes
+    cmds:
+      - npx tsx src/deploy-to-multica.ts --dry-run {{.CLI_ARGS}}
+
+  deploy:server:
+    desc: Deploy to a specific server by index (e.g. task deploy:server -- --server 0)
+    cmds:
+      - npx tsx src/deploy-to-multica.ts {{.CLI_ARGS}}
+
+  deploy:workspace:
+    desc: Deploy to a specific workspace (e.g. task deploy:workspace -- --workspace 0.1)
+    cmds:
+      - npx tsx src/deploy-to-multica.ts {{.CLI_ARGS}}

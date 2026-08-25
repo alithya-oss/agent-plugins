@@ -1,0 +1,53 @@
+{
+  "name": "agent-plugins",
+  "version": "1.0.0",
+  "description": "A monorepo of Agent Plugins maintained by Alithya, compliant with the Agent Plugins Specification v1.0.0.",
+  "private": true,
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-plugin.mjs",
+    "sync": "tsx src/sync-backstage-skills.ts",
+    "deploy": "tsx src/deploy-to-multica.ts",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alithya-oss/agent-plugins.git"
+  },
+  "keywords": [
+    "agent-plugins",
+    "backstage",
+    "multica"
+  ],
+  "bugs": {
+    "url": "https://github.com/alithya-oss/agent-plugins/issues"
+  },
+  "homepage": "https://github.com/alithya-oss/agent-plugins#readme",
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^26.3.0",
+    "husky": "^9.1.7",
+    "js-yaml": "^4.3.1",
+    "lint-staged": "^17.3.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  },
+  "lint-staged": {
+    "plugins/**/plugin.json": [
+      "node scripts/validate-plugin.mjs"
+    ],
+    "src/**/*.ts": [
+      "tsc --noEmit --skipLibCheck"
+    ],
+    "multica.deployment.config.yaml": [
+      "conftest test --policy .conftest/policy/multica/ --all-namespaces"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "backstage-development",
+  "version": "0.1.0",
+  "description": "Agent skills for Backstage plugin development: scaffolding, frontend/backend systems, catalog, permissions, UI migration, OpenAPI onboarding, and more.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://backstage.io",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "backstage", "backstage-plugin", "frontend-system", "backend-system", "catalog", "scaffolder", "permissions", "migration", "openapi"]
+}

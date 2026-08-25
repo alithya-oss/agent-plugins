@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "hello-world",
+  "version": "0.1.0",
+  "description": "A sample plugin to demonstrate the Agent Plugins v1.0.0 structure.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "example", "hello-world"]
+}

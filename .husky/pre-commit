@@ -1,0 +1,3 @@
+# npm lint-staged
+# npm tsc --noEmit
+./scripts/validate.sh

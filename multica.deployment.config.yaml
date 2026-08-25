@@ -1,0 +1,67 @@
+# multica.deployment.config.yaml — Configuration for deploying skills and agents to a Multica instance.
+#
+# Hierarchy: server > workspace > skills/agents
+# A server can host multiple workspaces; each workspace has its own skills and agents.
+#
+# Environment variables (override per-target values):
+#   MULTICA_TOKEN        — Personal access token (required; never commit this)
+#   MULTICA_SERVER_URL   — Override the server URL for all targets
+#   MULTICA_WORKSPACE_ID — Override the workspace ID for all targets
+
+servers:
+  # --- Local development instance ---
+  - url: "http://localhost:8080"
+    # token_env: MULTICA_TOKEN       # env var holding the PAT (default: MULTICA_TOKEN)
+    workspaces:
+      - id: ""                        # Workspace UUID (required)
+        # name: "my-workspace"        # Optional human label (informational only)
+
+        skills:
+          on_conflict: overwrite      # overwrite | skip | fail
+          sources:
+            # Deploy all skills from the backstage-development plugin
+            - plugin: backstage-development
+              skills:
+                - "*"                 # Wildcard: all skills in the plugin
+
+            # Or cherry-pick specific skills:
+            # - plugin: backstage-development
+            #   skills:
+            #     - creating-backstage-plugin
+            #     - using-backstage-frontend-system
+            #     - backstage-testing-conventions
+
+        agents:
+          skill_binding: additive     # additive | replace
+          definitions:
+            - name: "backstage-developer"
+              description: "Backstage plugin development agent with full skill set for frontend, backend, catalog, scaffolder, and migration workflows."
+              skills:
+                - "*"                 # Bind all deployed skills
+              # Or bind specific skills:
+              # skills:
+              #   - creating-backstage-plugin
+              #   - using-backstage-frontend-system
+              #   - using-backstage-backend-system
+              #   - using-backstage-ui
+              #   - backstage-testing-conventions
+
+  # --- Production / staging example (uncomment to use) ---
+  # - url: "https://api.multica.example.com"
+  #   token_env: MULTICA_PROD_TOKEN
+  #   workspaces:
+  #     - id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+  #       name: "production"
+  #       skills:
+  #         on_conflict: overwrite
+  #         sources:
+  #           - plugin: backstage-development
+  #             skills:
+  #               - "*"
+  #       agents:
+  #         skill_binding: replace
+  #         definitions:
+  #           - name: "backstage-developer"
+  #             description: "Production Backstage development agent."
+  #             skills:
+  #               - "*"
