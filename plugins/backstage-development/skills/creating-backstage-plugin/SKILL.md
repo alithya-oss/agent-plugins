@@ -1,6 +1,6 @@
 ---
 name: creating-backstage-plugin
-description: Use when the user wants to create a new Backstage plugin. Drives `yarn new` to scaffold the right template and optionally pre-wires common patterns (catalog access, identity, etc.) based on user intent. Triggers on phrases like "create a new plugin", "scaffold a Backstage plugin", "I want to add a frontend/backend plugin".
+description: Use when the user wants to create any new Backstage package — plugin, module, processor, provider, scaffolder action, or library. Drives `yarn new` to scaffold the right template and optionally pre-wires common patterns (catalog access, identity, etc.) based on user intent. Triggers on phrases like "create a new plugin", "scaffold a Backstage plugin", "I want to add a frontend/backend plugin", "build a new module", "new backend module", "new catalog processor", "new entity provider", "new scaffolder action", or any request to add a new package to a Backstage repo.
 ---
 
 # Creating a Backstage Plugin
@@ -70,13 +70,29 @@ If the user wants changes, revise and re-confirm.
 
 ### 4. Run `yarn new`
 
-Once confirmed, run from the repo root for each package in the plan. Single-package case:
+Once confirmed, run from the repo root for each package in the plan.
+
+**Single-package case** (plugins, libraries):
 
 ```bash
 yarn new --select <template> --option pluginId=<id>
 ```
 
-Connected plugin set case — run three commands, in order (`-common` first so the others can depend on it):
+**Module case** (`backend-plugin-module`, `frontend-plugin-module`) — modules need both the host plugin ID and the module ID:
+
+```bash
+yarn new --select backend-plugin-module --option pluginId=<host-plugin> --option moduleId=<module-id>
+```
+
+For example, a catalog processor module:
+
+```bash
+yarn new --select backend-plugin-module --option pluginId=catalog --option moduleId=my-processor
+```
+
+This produces `plugins/catalog-backend-module-my-processor`.
+
+**Connected plugin set case** — run three commands, in order (`-common` first so the others can depend on it):
 
 ```bash
 yarn new --select plugin-common-library --option pluginId=<id>-common
@@ -129,7 +145,6 @@ For each pattern in the plan, invoke the corresponding pattern skill via the Ski
 For a **connected plugin set**, after running the three `yarn new` commands:
 
 1. Populate `plugins/<id>-common/src/index.ts` with the shared TypeScript types the plan calls for. What belongs in `-common`:
-
    - Domain interfaces and type aliases (e.g. `JiraProject`, `JiraIssue`)
    - Request/response shapes the backend route returns and the frontend hook consumes
    - Constants the backend route paths share with the frontend
@@ -137,7 +152,6 @@ For a **connected plugin set**, after running the three `yarn new` commands:
    - Zod schemas (if both sides validate the same shape)
 
    What does NOT belong in `-common`:
-
    - Runtime React or Express code
    - Anything that imports `@backstage/frontend-plugin-api` or `@backstage/backend-plugin-api`
    - Side-effecting initializers
