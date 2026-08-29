@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "general-purpose-assistant",
+  "version": "0.1.0",
+  "description": "A general purpose plugin.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "assistant", "general-purpose"],
+  "extensions": {
+    "com.multica": {
+      "setting": true
+    }
+  }
+}
