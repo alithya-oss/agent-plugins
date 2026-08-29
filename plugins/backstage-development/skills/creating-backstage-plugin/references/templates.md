@@ -21,7 +21,7 @@ Apply the first rule that matches:
 0. User describes a plugin that needs **both a UI and its own dedicated backend** (talks to an external system requiring server-side credentials, or aggregates/paginates data) → propose a **connected plugin set**: `frontend-plugin` + `backend-plugin` + `plugin-common-library`. See "Connected plugin sets" in `creating-backstage-plugin/SKILL.md`.
 1. User says "catalog provider" or "ingest entities from X" → `catalog-provider-module`.
 2. User says "scaffolder action" or "template action" → `scaffolder-backend-module`.
-3. User says "module for the catalog/scaffolder/auth backend" or "extend the X backend" → `backend-plugin-module`.
+3. User says "catalog processor", "module for the catalog/scaffolder/auth backend", or "extend the X backend" → `backend-plugin-module`.
 4. User says "module that adds something to <existing frontend plugin>" → `frontend-plugin-module`.
 5. User says "shared types" or "common library" → `plugin-common-library`.
 6. User says "shared backend utilities" or "node library" → `plugin-node-library`.
