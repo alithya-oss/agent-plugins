@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/alithya-oss/agent-plugins#readme",
   "devDependencies": {
+    "@changesets/cli": "^3.0.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^26.3.0",
     "husky": "^9.1.7",
