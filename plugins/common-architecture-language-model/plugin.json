@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "common-architecture-language-model",
+  "version": "0.1.0",
+  "description": "FINOS Common Architecture Language Model (CALM) skills: authoring and validating architectures, nodes, relationships, interfaces, controls, flows, patterns, metadata, standards, decorators, timelines, moments, documentation, and CALM CLI usage.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://calm.finos.org",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "finos", "calm", "architecture", "architecture-as-code", "modeling", "governance"]
+}
