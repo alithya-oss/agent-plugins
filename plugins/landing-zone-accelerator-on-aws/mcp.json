@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "awslabs.lza-mcp-server": {
+      "command": "<PLUGIN_PATH>/scripts/run-lza-mcp-server.sh",
+      "args": [
+        "docker", "run",
+        "--security-opt=no-new-privileges:true",
+        "--cap-drop=ALL",
+        "--read-only",
+        "--tmpfs", "/tmp:rw,noexec,nosuid,size=200m",
+        "--rm", "-i",
+        "-v", "<CONFIG_PATH>:/app/lza-config:rw",
+        "-e", "LZA_CONFIG_HOST_PATH=<CONFIG_PATH>",
+        "-e", "AWS_ACCESS_KEY_ID",
+        "-e", "AWS_SECRET_ACCESS_KEY",
+        "-e", "AWS_SESSION_TOKEN",
+        "-e", "AWS_REGION",
+        "-e", "FASTMCP_LOG_LEVEL=INFO",
+        "-e", "ENABLE_UC_MERGE=false",
+        "ghcr.io/alithya-oss/lza-mcp-server:latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "<YOUR_AWS_PROFILE>",
+        "AWS_REGION": "<YOUR_AWS_REGION>"
+      },
+      "disabled": false,
+      "autoApprove": [
+        "checkAwsConnectivity",
+        "getDeployedLzaVersion",
+        "listLzaSupportedVersions",
+        "searchJsonSchema",
+        "getFullSchema",
+        "getDeploymentStatus",
+        "getLzaConfiguration",
+        "readLzaConfigFile",
+        "getMinimumConfiguration"
+      ]
+    }
+  }
+}

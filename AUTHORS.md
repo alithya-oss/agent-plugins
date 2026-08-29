@@ -23,9 +23,13 @@ these copies up to date; the upstream project is the source of truth.
 | `likec4-diagramming` | [likec4/likec4](https://github.com/likec4/likec4) (`skills`) | Denis Davydkov and LikeC4 contributors | MIT |
 | `adr` | [zircote-plugins/adr](https://github.com/zircote-plugins/adr) (`skills`) | zircote | MIT |
 
-Plugins authored in this repository (for example `hello-world`, and the
-`com.multica` agents and `dev.kiro` hooks under `plugins/`) are original work by
-the maintainers listed above and are licensed under [MIT](LICENSE).
+Plugins authored in this repository (for example `hello-world`,
+`landing-zone-accelerator-on-aws`, and the `com.multica` agents and `dev.kiro`
+hooks under `plugins/`) are original work by the maintainers listed above and
+are licensed under [MIT](LICENSE). The `landing-zone-accelerator-on-aws` plugin
+integrates the external
+[awslabs/lza-mcp-server](https://github.com/awslabs/lza-mcp-server)
+(Apache-2.0) as an MCP tool but does not redistribute its source.
 
 When a new synced plugin is added, add a row to the table above with its
 upstream repository URL, author, and license.

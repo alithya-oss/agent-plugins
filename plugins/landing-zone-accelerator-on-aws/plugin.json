@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "landing-zone-accelerator-on-aws",
+  "version": "0.1.0",
+  "description": "Agent skills for managing Landing Zone Accelerator on AWS (LZA) deployments via the awslabs/lza-mcp-server: configuration management, schema discovery, pipeline orchestration, and manual approvals.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://aws.amazon.com/solutions/implementations/landing-zone-accelerator-on-aws/",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "aws", "landing-zone-accelerator", "lza", "mcp", "multi-account", "governance", "cloud-foundations", "compliance"]
+}
