@@ -1,0 +1,25 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "ADR Bilingual Sync",
+      "trigger": "PostFileSave",
+      "description": "When an ADR under docs/adrs/ is modified, detect its language and keep the English/French counterpart in sync by generating or updating the translated copy.",
+      "matcher": "docs/adrs/.*\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "An ADR file under docs/adrs/ was just created or modified. Keep the bilingual (English/French) pair in sync.\n\nFollow these steps:\n\n1. Identify the saved ADR file and determine its language from the filename convention:\n   - A file ending in `.fr.md` is the FRENCH copy.\n   - Any other `.md` file (e.g. `0001-title.md`) is the ENGLISH copy.\n\n2. Determine the counterpart path:\n   - English `0001-title.md`  <->  French `0001-title.fr.md`\n   - The two files share the same numeric prefix and slug; only the `.fr` segment differs.\n\n3. Read the saved file. Then create or update the counterpart so it is a faithful translation:\n   - English source -> generate/update the `.fr.md` French copy.\n   - French source -> generate/update the base `.md` English copy.\n\n4. Preserve the MADR structure exactly: keep the YAML front matter keys, the section headings, and the Good/Neutral/Bad (Bon/Neutre/Mauvais) bullet conventions. Translate the `status` value too (e.g. accepted <-> accepté, proposed <-> proposé, deprecated <-> déprécié, superseded <-> remplacé).\n\n5. Do NOT translate technical identifiers, code, file names, config keys, or values (e.g. plugin.json, package.json, baseBranch, access: restricted, @changesets/changelog-github). Leave URLs and reference links unchanged.\n\n6. If the counterpart already exists, update only what changed to keep them equivalent; do not restructure it. If it does not exist, create it.\n\n7. To avoid an infinite loop: if the counterpart is already an accurate, up-to-date translation of the saved file, make no changes."
+      }
+    },
+    {
+      "name": "ADR Bilingual Sync (on create)",
+      "trigger": "PostFileCreate",
+      "description": "When an ADR under docs/adrs/ is created, detect its language and generate the English/French counterpart.",
+      "matcher": "docs/adrs/.*\\.md$",
+      "action": {
+        "type": "agent",
+        "prompt": "An ADR file under docs/adrs/ was just created. Keep the bilingual (English/French) pair in sync.\n\nFollow these steps:\n\n1. Identify the created ADR file and determine its language from the filename convention:\n   - A file ending in `.fr.md` is the FRENCH copy.\n   - Any other `.md` file (e.g. `0001-title.md`) is the ENGLISH copy.\n\n2. Determine the counterpart path:\n   - English `0001-title.md`  <->  French `0001-title.fr.md`\n   - The two files share the same numeric prefix and slug; only the `.fr` segment differs.\n\n3. Read the created file. Then create or update the counterpart so it is a faithful translation:\n   - English source -> generate/update the `.fr.md` French copy.\n   - French source -> generate/update the base `.md` English copy.\n\n4. Preserve the MADR structure exactly: keep the YAML front matter keys, the section headings, and the Good/Neutral/Bad (Bon/Neutre/Mauvais) bullet conventions. Translate the `status` value too (e.g. accepted <-> accepté, proposed <-> proposé, deprecated <-> déprécié, superseded <-> remplacé).\n\n5. Do NOT translate technical identifiers, code, file names, config keys, or values (e.g. plugin.json, package.json, baseBranch, access: restricted, @changesets/changelog-github). Leave URLs and reference links unchanged.\n\n6. If the counterpart already exists, update only what changed to keep them equivalent; do not restructure it. If it does not exist, create it.\n\n7. To avoid an infinite loop: if the counterpart is already an accurate, up-to-date translation of the created file, make no changes."
+      }
+    }
+  ]
+}

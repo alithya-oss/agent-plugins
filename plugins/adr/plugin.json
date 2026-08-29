@@ -1,0 +1,28 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "adr",
+  "version": "0.2.0",
+  "description": "Architectural Decision Records (ADR) lifecycle skills: authoring, formats (MADR, Nygard, Y-statement, and more), decision drivers, quality, compliance auditing, and integration.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://adr.github.io/",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "adr", "architecture", "decisions", "documentation", "madr", "compliance", "governance"],
+  "extensions": {
+    "com.multica": {
+      "agents": [
+        "adr-author",
+        "adr-researcher",
+        "adr-compliance"
+      ]
+    },
+    "dev.kiro": {
+      "hooks": [
+        "adr-bilingual-sync"
+      ]
+    }
+  }
+}

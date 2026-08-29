@@ -29,13 +29,14 @@ tasks:
 
   sync:
     desc: Sync all plugin skills from upstream repositories
-    deps: [sync:backstage, sync:likec4]
+    deps: [sync:backstage, sync:likec4, sync:adr]
 
   sync:dry-run:
     desc: Preview all upstream skill changes without writing
     cmds:
       - npx tsx src/sync-backstage-skills.ts --dry-run
       - npx tsx src/sync-likec4-skills.ts --dry-run
+      - npx tsx src/sync-adr-skills.ts --dry-run
 
   sync:backstage:
     desc: Sync backstage-development skills from upstream repositories
@@ -56,6 +57,16 @@ tasks:
     desc: Preview likec4-diagramming upstream skill changes without writing
     cmds:
       - npx tsx src/sync-likec4-skills.ts --dry-run
+
+  sync:adr:
+    desc: Sync adr skills from upstream repository
+    cmds:
+      - npx tsx src/sync-adr-skills.ts {{.CLI_ARGS}}
+
+  sync:adr:dry-run:
+    desc: Preview adr upstream skill changes without writing
+    cmds:
+      - npx tsx src/sync-adr-skills.ts --dry-run
 
   deploy:
     desc: Deploy skills and agents to all Multica servers/workspaces (requires MULTICA_TOKEN)
