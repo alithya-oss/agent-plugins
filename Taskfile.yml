@@ -28,14 +28,34 @@ tasks:
       - npx tsc --noEmit
 
   sync:
+    desc: Sync all plugin skills from upstream repositories
+    deps: [sync:backstage, sync:likec4]
+
+  sync:dry-run:
+    desc: Preview all upstream skill changes without writing
+    cmds:
+      - npx tsx src/sync-backstage-skills.ts --dry-run
+      - npx tsx src/sync-likec4-skills.ts --dry-run
+
+  sync:backstage:
     desc: Sync backstage-development skills from upstream repositories
     cmds:
       - npx tsx src/sync-backstage-skills.ts {{.CLI_ARGS}}
 
-  sync:dry-run:
-    desc: Preview upstream skill changes without writing
+  sync:backstage:dry-run:
+    desc: Preview backstage-development upstream skill changes without writing
     cmds:
       - npx tsx src/sync-backstage-skills.ts --dry-run
+
+  sync:likec4:
+    desc: Sync likec4-diagramming skills from upstream repository
+    cmds:
+      - npx tsx src/sync-likec4-skills.ts {{.CLI_ARGS}}
+
+  sync:likec4:dry-run:
+    desc: Preview likec4-diagramming upstream skill changes without writing
+    cmds:
+      - npx tsx src/sync-likec4-skills.ts --dry-run
 
   deploy:
     desc: Deploy skills and agents to all Multica servers/workspaces (requires MULTICA_TOKEN)

@@ -1,0 +1,48 @@
+name: Sync LikeC4 Skills
+
+on:
+  schedule:
+    # Run weekly on Monday at 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Sync upstream skills
+        id: sync
+        run: npx tsx src/sync-likec4-skills.ts --output ci
+
+      - name: Create Pull Request
+        if: steps.sync.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/sync-likec4-skills
+          delete-branch: true
+          title: "chore: sync likec4-diagramming skills from upstream"
+          body-path: ${{ steps.sync.outputs.summary_file }}
+          commit-message: "chore: sync likec4-diagramming skills from upstream"
+          labels: |
+            dependencies
+            automated
+          reviewers: ${{ github.repository_owner }}

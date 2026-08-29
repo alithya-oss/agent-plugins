@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "likec4-diagramming",
+  "version": "0.1.0",
+  "description": "Agent skills for LikeC4 architecture-as-code development: DSL syntax, model and views, deployment, dynamic views, predicates, CLI usage, and troubleshooting.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://likec4.dev",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "likec4", "architecture-as-code", "c4-model", "dsl", "diagrams", "deployment", "views"]
+}
