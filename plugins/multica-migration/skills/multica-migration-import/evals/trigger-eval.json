@@ -1,0 +1,19 @@
+{
+  "skill_name": "multica-migration-import",
+  "trigger_evals": {
+    "should_trigger": [
+      "Import the migration bundle into the new Multica server",
+      "Run import_project.py",
+      "Recreate agents and skills on the target Multica",
+      "Verify the Multica import",
+      "Resume a failed Multica import"
+    ],
+    "should_not_trigger": [
+      "Create a new issue in Multica",
+      "Deploy this CloudFormation stack",
+      "Write an ADR for using PostgreSQL",
+      "How do I assign an issue to an agent?",
+      "Summarize the comments on this issue"
+    ]
+  }
+}
