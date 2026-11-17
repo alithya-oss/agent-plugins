@@ -1,0 +1,27 @@
+{
+  "skill_name": "multica-migration-export",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Export the project 'Platform Rollout' with its issues and the agent 'Builder' so I can import it elsewhere.",
+      "expected_output": "Runs export.py with --project, --out, --agents Builder, --skills used, then scans for secrets.",
+      "files": [],
+      "expectations": [
+        "Uses scripts/export.py with the project, an output folder and --agents",
+        "Runs scan-secrets.sh on the bundle",
+        "Confirms issue and comment counts against the source",
+        "Keeps agent env vars and MCP configs out of the bundle"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The scan flagged 'mat_numbered_section' in skills.json. Is that a token?",
+      "expected_output": "Explains it is a false positive from skill text and that the scan targets long token-shaped values.",
+      "files": [],
+      "expectations": [
+        "Says it is an identifier in skill text, not a token",
+        "Notes the scan matches mul_/mat_ followed by a long hex run"
+      ]
+    }
+  ]
+}

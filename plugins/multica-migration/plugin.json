@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "multica-migration",
+  "version": "0.1.0",
+  "description": "Migrate Multica projects, issues, comments, agents and skills between Multica instances with the multica CLI: plan, export, import, verify and cut over.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://github.com/alithya-oss/multica-migrations",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "multica", "migration", "export", "import", "cutover"],
+  "extensions": {
+    "com.multica": {
+      "agents": [
+        "multica-migrator"
+      ]
+    }
+  }
+}

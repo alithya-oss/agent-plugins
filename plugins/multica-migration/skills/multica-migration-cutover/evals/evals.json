@@ -1,0 +1,29 @@
+{
+  "skill_name": "multica-migration-cutover",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The migration is verified. Archive the old project.",
+      "expected_output": "Sets the source project status to the agreed value, noting there is no archive status.",
+      "files": [],
+      "expectations": [
+        "States Multica has no archived status",
+        "Uses cancelled or paused as agreed and not completed by default",
+        "Does not delete issues or the project",
+        "Mentions it is reversible via multica project status"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Point my daemon at the new server.",
+      "expected_output": "Logs in with a separate profile, starts the daemon, confirms the runtime online, never kills multica by name.",
+      "files": [],
+      "expectations": [
+        "Uses multica login --server-url with --profile",
+        "Confirms the runtime is online on the target",
+        "Does not terminate multica by executable name",
+        "Reminds the user to revoke the pasted token"
+      ]
+    }
+  ]
+}

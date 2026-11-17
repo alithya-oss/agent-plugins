@@ -1,0 +1,39 @@
+{
+  "skill_name": "multica-migration-import",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Import the bundle into https://multica.example, workspace 1234, agents first.",
+      "expected_output": "Sets env vars, runs import_agents.py dry run then --apply, then import_project.py dry run then --apply, ending in VERIFY PASSED.",
+      "files": [],
+      "expectations": [
+        "Sets MULTICA_SERVER_URL, MULTICA_TOKEN and MULTICA_WORKSPACE_ID in the environment only",
+        "Runs dry runs and shows them before --apply",
+        "Imports agents and skills before the project",
+        "Runs --verify and reports VERIFY PASSED and the identifier map"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "import_agents.py says runtime 'Kiro (GMR-FJUDITH)' not found.",
+      "expected_output": "Explains the daemon must be logged in to the target server first.",
+      "files": [],
+      "expectations": [
+        "Says the daemon is not registered on the target yet",
+        "Suggests multica login --server-url with a separate --profile and starting the daemon",
+        "Does not create the agents on a different runtime without asking"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The import stopped after 5 issues because of a network error.",
+      "expected_output": "Re-runs --apply; state.json prevents duplicates.",
+      "files": [],
+      "expectations": [
+        "Says the importer is resumable via state.json",
+        "Does not delete the target project",
+        "Re-runs --apply then --verify"
+      ]
+    }
+  ]
+}
