@@ -5,11 +5,11 @@ description: This skill should be used when the user asks to "write a post-morte
 
 # Post-mortem Template
 
-Produce a blameless project post-mortem from the Alithya template in `references/template.fr.md`.
+Produce a blameless project post-mortem from the Alithya template in `references/document-template.md`.
 
 ## Workflow
 
-1. Copy `references/template.fr.md` to the target location (for example `docs/postmortem/<project>.md`).
+1. Copy `references/document-template.md` to the target location (for example `docs/postmortem/<project>.md`).
 2. Fill the front matter, then replace every `[...]` placeholder with facts from project evidence (issues, pull requests, commits, ADRs, comments). Never invent facts, dates, names, or figures.
 3. Mark any section lacking evidence as `À compléter: <what is missing>` instead of guessing.
 4. Remove template-only guidance comments before delivery.
