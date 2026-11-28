@@ -21,6 +21,7 @@ these copies up to date; the upstream project is the source of truth.
 | `backstage-development` | [backstage/backstage](https://github.com/backstage/backstage) (`docs/.well-known/skills`) | The Backstage Authors | Apache-2.0 |
 | `backstage-development` | [vinzscam/backstage-skills](https://github.com/vinzscam/backstage-skills) | Vincenzo Scamporlino | Apache-2.0 |
 | `likec4-diagramming` | [likec4/likec4](https://github.com/likec4/likec4) (`skills`) | Denis Davydkov and LikeC4 contributors | MIT |
+| `slidev-presentations` | [slidevjs/slidev](https://github.com/slidevjs/slidev) (`skills/slidev`) | Anthony Fu and Slidev contributors | MIT |
 | `adr` | [zircote-plugins/adr](https://github.com/zircote-plugins/adr) (`skills`) | zircote | MIT |
 
 Plugins authored in this repository (for example `hello-world`,

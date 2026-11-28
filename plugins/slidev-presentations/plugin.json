@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "slidev-presentations",
+  "version": "0.1.0",
+  "description": "Agent skill and agents for generating Slidev presentation decks from Markdown: slide syntax, layouts, code blocks, diagrams, build and export.",
+  "author": {
+    "name": "Alithya",
+    "url": "https://github.com/alithya-oss"
+  },
+  "homepage": "https://sli.dev",
+  "repository": "https://github.com/alithya-oss/agent-plugins",
+  "license": "MIT",
+  "keywords": ["agent-plugins", "slidev", "presentation", "slides", "markdown", "deck"]
+}
