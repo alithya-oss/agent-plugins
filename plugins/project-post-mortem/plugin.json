@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "postmortem",
+  "name": "project-post-mortem",
   "version": "0.1.0",
   "description": "Blameless project post-mortem skills: a structured French post-mortem template and guidance to fill it from project evidence.",
   "author": {
@@ -10,5 +10,5 @@
   "homepage": "https://github.com/alithya-oss/agent-plugins",
   "repository": "https://github.com/alithya-oss/agent-plugins",
   "license": "MIT",
-  "keywords": ["agent-plugins", "postmortem", "retrospective", "lessons-learned", "documentation"]
+  "keywords": ["agent-plugins", "project-post-mortem", "postmortem", "retrospective", "lessons-learned", "documentation"]
 }
