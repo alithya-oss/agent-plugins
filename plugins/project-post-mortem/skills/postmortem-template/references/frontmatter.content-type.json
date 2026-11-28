@@ -1,0 +1,39 @@
+{
+  "$schema": "https://frontmatter.codes/frontmatter.schema.json",
+  "frontMatter.taxonomy.contentTypes": [
+    {
+      "name": "project-post-mortem",
+      "pageBundle": false,
+      "fields": [
+        {
+          "name": "title",
+          "type": "string",
+          "title": "Titre",
+          "description": "Post-mortem [Nom du projet]",
+          "default": "Post-mortem {{title}}",
+          "required": true
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "title": "Description",
+          "description": "Description courte du projet",
+          "required": true
+        },
+        {
+          "name": "date",
+          "type": "datetime",
+          "title": "Date",
+          "default": "{{now}}",
+          "isPublishDate": true
+        },
+        {
+          "name": "draft",
+          "type": "draft",
+          "title": "Brouillon",
+          "default": false
+        }
+      ]
+    }
+  ]
+}

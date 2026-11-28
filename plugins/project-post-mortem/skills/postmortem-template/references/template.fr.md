@@ -1,6 +1,7 @@
 ---
 title: Post-mortem [Nom du projet]
 description: Post-mortem [Description courte du projet]
+date: [AAAA-MM-JJTHH:MM:SS+00:00]
 draft: false
 ---
 

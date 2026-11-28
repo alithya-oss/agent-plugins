@@ -10,9 +10,20 @@ Produce a blameless project post-mortem from the Alithya template in `references
 ## Workflow
 
 1. Copy `references/template.fr.md` to the target location (for example `docs/postmortem/<project>.md`).
-2. Replace every `[...]` placeholder with facts from project evidence (issues, pull requests, commits, ADRs, comments). Never invent facts, dates, names, or figures.
+2. Fill the front matter, then replace every `[...]` placeholder with facts from project evidence (issues, pull requests, commits, ADRs, comments). Never invent facts, dates, names, or figures.
 3. Mark any section lacking evidence as `À compléter: <what is missing>` instead of guessing.
 4. Remove template-only guidance comments before delivery.
+
+## Front matter
+
+The front matter follows the [Front Matter CMS field specification](https://frontmatter.codes/docs/content-creation/fields/#standard-field-properties). Each field is defined in `references/frontmatter.content-type.json` with the standard properties `name` and `type` (required), plus `title`, `description`, `default`, and `required`.
+
+- `title` (string, required): `Post-mortem <project name>`.
+- `description` (string, required): short project description.
+- `date` (datetime): ISO 8601 date of writing; use `{{now}}` semantics.
+- `draft` (draft, boolean): `true` until reviewed, then `false`.
+
+Keep the front matter keys of the document in sync with the field `name` values of that content type. Merge the content type into the target repository's `frontmatter.json` when it uses Front Matter CMS.
 
 ## Rules
 
