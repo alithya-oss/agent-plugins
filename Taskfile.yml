@@ -29,13 +29,14 @@ tasks:
 
   sync:
     desc: Sync all plugin skills from upstream repositories
-    deps: [sync:backstage, sync:likec4, sync:adr, sync:common-architecture-language-model]
+    deps: [sync:backstage, sync:likec4, sync:slidev, sync:adr, sync:common-architecture-language-model]
 
   sync:dry-run:
     desc: Preview all upstream skill changes without writing
     cmds:
       - npx tsx src/sync-backstage-skills.ts --dry-run
       - npx tsx src/sync-likec4-skills.ts --dry-run
+      - npx tsx src/sync-slidev-skills.ts --dry-run
       - npx tsx src/sync-adr-skills.ts --dry-run
       - npx tsx src/sync-common-architecture-language-model-skills.ts --dry-run
 
@@ -58,6 +59,16 @@ tasks:
     desc: Preview likec4-diagramming upstream skill changes without writing
     cmds:
       - npx tsx src/sync-likec4-skills.ts --dry-run
+
+  sync:slidev:
+    desc: Sync slidev-presentations skills from upstream repository
+    cmds:
+      - npx tsx src/sync-slidev-skills.ts {{.CLI_ARGS}}
+
+  sync:slidev:dry-run:
+    desc: Preview slidev-presentations upstream skill changes without writing
+    cmds:
+      - npx tsx src/sync-slidev-skills.ts --dry-run
 
   sync:adr:
     desc: Sync adr skills from upstream repository
